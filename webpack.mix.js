@@ -1,4 +1,4 @@
-const mix = require('laravel-mix');
+let mix = require('laravel-mix');
 
 /*
  |--------------------------------------------------------------------------
@@ -11,5 +11,13 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+mix.react('resources/assets/js/app.js', 'public/js')
+    .less('resources/assets/less/app.less', 'public/css', {javascriptEnabled: true});
+
+if (mix.inProduction()) {
+    mix.version();
+}
+
+mix.browserSync('tibia.test');
+
+mix.disableNotifications();
