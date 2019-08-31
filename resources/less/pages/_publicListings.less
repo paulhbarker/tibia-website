@@ -1,0 +1,46 @@
+.public-listings {
+    .flex-column-center();
+
+    .user-photo {
+        height: 100px;
+        border-radius: 100px;
+        width: 100px;
+        background-size: cover;
+        background-position: center;
+        margin-top: 20px;
+    }
+
+    .listing-preview {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+    .listings-wrapper {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        max-width: 450px;
+        width: 100%;
+    }
+
+    .listing-preview {
+        width: 100%;
+        max-width: 450px;
+        margin: 0 auto;
+
+        @media only screen and (min-width: 480px) {
+            margin: 10px;
+        }
+    }
+
+    .public-name {
+        margin-top: 20px;
+        font-weight: bold;
+        margin-bottom: 0;
+        font-size: 16px;
+    }
+
+    .cta-info {
+        margin-bottom: 20px;
+    }
+}

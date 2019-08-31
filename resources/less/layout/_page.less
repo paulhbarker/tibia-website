@@ -1,0 +1,63 @@
+body, html {
+    height: 100%;
+    width: 100%;
+}
+
+.app-page {
+    display: flex;
+    height: 100vh;
+    min-width: 1024px;
+}
+
+.wrapper {
+    width: 100%;
+    margin-left: 0;
+    height: 100vh;
+    overflow-y: scroll;
+    background-color: @page-panel-background;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    .content {
+    @include clearfix;
+
+        .page-panel {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            clear: both;
+            display: block;
+            width: 100%;
+        }
+
+        .page-panel-inner {
+            display: flex;
+            width: 100%;
+        }
+
+        .page-panel-content {
+            display: block;
+            padding: @page-padding;
+            vertical-align: top;
+            width: 100%;
+        }
+
+        .page-panel-aside {
+            padding: 20px;
+            flex: 0 0 240px;
+            border-right: 1px solid #ccc;
+        }
+
+        .main {
+            min-height: 360px;
+        }
+    }
+}
+
+.fill-page {
+    .flex-column-center();
+    justify-content: center;
+    height: calc(100vh - (96px + 85px + 30px))
+}

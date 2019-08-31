@@ -1,0 +1,31 @@
+.table {
+    background-color: #FFF;
+    padding: 20px;
+    width: 100%;
+    table-layout: fixed;
+
+    tbody {
+        border: @border;
+    }
+
+    td {
+        padding: 10px 0;
+        border-bottom: @border;
+    }
+
+    .menu {
+        width: 30%;
+        text-align: right;
+        padding: 0 15px 0 0;
+
+        .menu-inner {
+            .flex-row-center();
+            justify-content: flex-end;
+        }
+
+        .btn-icon {
+            color: inherit;
+            margin-left: 5px;
+        }
+    }
+}

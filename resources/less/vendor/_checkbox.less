@@ -1,0 +1,27 @@
+.ant-checkbox-inner {
+    border: 2px solid @icon-grey;
+
+    &:after {
+        top: 0;
+        left: 3px;
+    }
+}
+
+.ant-checkbox-indeterminate {
+    .ant-checkbox-inner {
+        border-color: @primary-color !important;
+
+        &:after {
+            width: 8px;
+            left: 2px;
+            top: 5px;
+        }
+    }
+}
+
+.ant-form-explain, .ant-form-extra {
+    line-height: 1.1;
+    margin-top: 4px;
+    margin-bottom: 2px;
+    font-size: 12px;
+}

@@ -1,0 +1,79 @@
+.table-leads {
+    box-shadow: @shadow;
+
+    tbody tr {
+        cursor: pointer;
+
+        &:hover {
+            box-shadow: @shadow-xs;
+        }
+    }
+
+    td,
+    td > div {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .is-new {
+        .phone, .date {
+            font-weight: 700;
+        }
+    }
+
+    .star {
+        width: 35px;
+        text-align: center;
+        padding-bottom: 8px;
+
+        i {
+            font-size: 22px;
+            color: @icon-grey;
+
+            &:hover {
+                color: @primary-color;
+                cursor: pointer;
+            }
+
+            &.starred {
+                color: @yellow-6;
+            }
+        }
+    }
+
+    .checkbox {
+        width: 35px;
+        text-align: center;
+        padding-left: 17px;
+        padding-bottom: 13px;
+    }
+
+    .phone {
+        position: relative;
+        width: 156px;
+        padding-left: 10px;
+        padding-right: 25px;
+
+        .new-lead-indicator {
+            display: inline-block;
+            margin-left: 10px;
+            margin-bottom: 2px;
+            background-color: @orange-5;
+            height: 6px;
+            width: 6px;
+            border-radius: 10px;
+        }
+    }
+
+    .notes {
+        width: 70%;
+    }
+
+    .date {
+        width: 30%;
+        text-align: right;
+        padding-right: 25px;
+        padding-left: 25px;
+    }
+}

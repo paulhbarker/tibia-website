@@ -11,8 +11,8 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.react('resources/assets/js/app.js', 'public/js')
-    .less('resources/assets/less/app.less', 'public/css', {javascriptEnabled: true});
+mix.react('resources/js/app.js', 'public/js')
+    .less('resources/less/app.less', 'public/css', {javascriptEnabled: true});
 
 if (mix.inProduction()) {
     mix.version();

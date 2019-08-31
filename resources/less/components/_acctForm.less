@@ -1,0 +1,74 @@
+.account-form {
+    position: relative;
+    width: 450px;
+    max-width: 95%;
+
+    .transition {
+        position: absolute;
+    }
+
+    .account-form-fields {
+        border: 1px solid rgba(19,20,49,.1);
+        padding: 0;
+        margin: 0 0 50px;
+        border-radius: 5px;
+        box-shadow: 0 10px 20px rgba(0,0,0,.03);
+        width: 100%;
+        -webkit-transition: all .2s;
+        transition: all .2s;
+    }
+
+    .account-input-group {
+        position: relative;
+        border-bottom: 1px solid rgba(19,20,49,.1);
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        input {
+            border: 0;
+            outline: none;
+            font-size: 15px;
+            width: 100%;
+            display: block;
+            padding: 35px 20px 15px;
+            background: hsla(0,0%,100%,0);
+            transition: transform .2s;
+
+            &:focus + label, &.filled + label {
+                top: 15px;
+                font-size: 13px;
+            }
+        }
+
+        label {
+            font-size: 15px;
+            color: rgba(19,20,49,.4);
+            position: absolute;
+            top: 26px;
+            left: 20px;
+            transition: all .2s;
+            pointer-events: none;
+
+            &.has-error {
+                color: @red-5;
+            }
+        }
+    }
+
+    .account-form-actions {
+        .flex-column-center();
+        margin-bottom: 30px;
+    }
+}
+
+.generic-form-error {
+    text-align: center;
+    color: @red-5;
+}
+
+.generic-form-success {
+    text-align: center;
+    color: @green-6;
+}

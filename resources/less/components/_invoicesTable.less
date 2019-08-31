@@ -1,0 +1,29 @@
+.table-invoices {
+    td, th {
+        padding: 15px;
+    }
+
+    tbody tr {
+        cursor: pointer;
+
+        &:hover {
+            box-shadow: @shadow-xs;
+        }
+    }
+
+    th {
+        color: @nav-section-title-color;
+    }
+
+    td {
+        font-weight: 500;
+    }
+
+    .date-column {
+        width: 100%;
+    }
+
+    .amount-column {
+        width: 100px;
+    }
+}

@@ -1,0 +1,44 @@
+.control-wrapper {
+    .flex-row-center();
+    width: 100%;
+    padding: 0 30px;
+
+    .checkbox {
+        padding-left: 18px;
+        padding-bottom: 3px;
+        margin-right: 40px;
+
+        .ant-checkbox-inner {
+            border-color: @nav-link-color;
+        }
+
+        .ant-checkbox-indeterminate, .ant-checkbox-checked {
+            .ant-checkbox-inner {
+                border-color: @primary-color;
+            }
+        }
+    }
+
+    .control-menu {
+        .flex-row-center();
+        color: @nav-link-color;
+
+        div {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+    }
+
+    .more {
+        padding: 5px;
+    }
+
+    .pagination {
+        .flex-row-center();
+        margin-left: auto;
+    }
+
+    .page-info {
+        margin-right: 10px;
+    }
+}

@@ -1,0 +1,34 @@
+.modal-mask {
+    position: fixed;
+    z-index: 9998;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: @modal-overlay-color;
+    display: table;
+    transition: opacity .22s;
+}
+
+.modal-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.modal-enter {
+    opacity: 0;
+
+    .listing-modal, .channel-modal {
+        transform: scale(0.9);
+    }
+}
+
+.modal-exit-active {
+    opacity: 0;
+
+    .listing-modal, .channel-modal {
+        transform: scale(0.9);
+    }
+}

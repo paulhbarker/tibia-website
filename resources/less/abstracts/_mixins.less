@@ -1,0 +1,58 @@
+.percentage-widths(@counter: 10) when (@counter <= 100) {
+    .is-@{counter}-percent {
+        width: (@counter * 1%);
+    }
+    .percentage-widths(@counter + 10);
+}
+
+.percentage-widths();
+
+.make-margins(@size: 50, @decrement: 10) when (@size >= 0) {
+    .make-margins(@size - @decrement);
+
+    @size-px: ~"@{size}px";
+
+    .m-@{size} {
+        margin: @size-px;
+    }
+    .m-t-@{size} {
+        margin-top: @size-px;
+    }
+    .m-r-@{size} {
+        margin-right: @size-px;
+    }
+    .m-b-@{size} {
+        margin-bottom: @size-px;
+    }
+    .m-l-@{size} {
+        margin-left: @size-px;
+    }
+}
+
+.make-margins();
+
+// PADDING
+
+.make-paddings(@size: 50, @decrement: 10) when (@size >= 0) {
+    .make-paddings(@size - @decrement);
+
+    @size-px: ~"@{size}px";
+
+    .p-@{size} {
+        padding: @size-px;
+    }
+    .p-t-@{size} {
+        padding-top: @size-px;
+    }
+    .p-r-@{size} {
+        padding-right: @size-px;
+    }
+    .p-b-@{size} {
+        padding-bottom: @size-px;
+    }
+    .p-l-@{size} {
+        padding-left: @size-px;
+    }
+}
+
+.make-paddings();
