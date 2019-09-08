@@ -13,4 +13,9 @@ class Token extends Model
         'key',
         'account_id',
     ];
+
+    public function account()
+    {
+    	return $this->belongsTo(Account::class);
+    }
 }

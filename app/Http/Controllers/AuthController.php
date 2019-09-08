@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Token;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
 use App\Account;
+use Illuminate\Support\Str;
 
 class AuthController extends ApiController
 {
@@ -19,11 +21,15 @@ class AuthController extends ApiController
     {
         $account = Account::where('name', $request->name)->first();
 
-        if ($account->password != sha1($request->password)) {
+        if (is_null($account) || $account->password != sha1($request->password)) {
             return $this->respondUnauthorized();
         }
 
-        return $this->respondOk();
+        $token = new Token([ 'key' => Str::random(60) ]);
+        $token->account()->associate($account);
+        $token->save();
+
+        return $this->respond([ 'token' => $token->key ]);
     }
 
     /**

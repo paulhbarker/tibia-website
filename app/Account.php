@@ -19,4 +19,9 @@ class Account extends Model
     ];
 
     public $timestamps = false;
+
+    public function token()
+    {
+    	return $this->hasOne(Token::class);
+    }
 }

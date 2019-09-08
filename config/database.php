@@ -63,6 +63,12 @@ return [
             ]) : [],
         ],
 
+        'testing' => [
+	        'driver' => 'sqlite',
+	        'database' => storage_path().'/testing.sqlite',
+	        'prefix' => '',
+        ],
+
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),
