@@ -2,7 +2,8 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Authentication\ApiTokenGuard;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -25,6 +26,11 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+	    Auth::extend('api-token', function ($app, $name, $config) {
+	    	$userProvider = Auth::createUserProvider($config['provider']);
+	    	$request = $app['request'];
+
+		    return new ApiTokenGuard($userProvider, $request);
+	    });
     }
 }

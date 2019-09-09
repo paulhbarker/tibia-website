@@ -6,6 +6,7 @@ use App\Token;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
 use App\Account;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class AuthController extends ApiController
@@ -19,17 +20,15 @@ class AuthController extends ApiController
      */
     protected function login(Request $request)
     {
-        $account = Account::where('name', $request->name)->first();
+    	$credentials = $request->only([ 'name', 'password' ]);
 
-        if (is_null($account) || $account->password != sha1($request->password)) {
-            return $this->respondUnauthorized();
-        }
+    	if (Auth::validate($credentials)) {
+		    $token = $request->user()->updateToken();
 
-        $token = new Token([ 'key' => Str::random(60) ]);
-        $token->account()->associate($account);
-        $token->save();
+		    return $this->respond([ 'token' => $token->key ]);
+	    }
 
-        return $this->respond([ 'token' => $token->key ]);
+	    return $this->respondUnauthorized();
     }
 
     /**
