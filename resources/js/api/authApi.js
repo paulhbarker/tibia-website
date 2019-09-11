@@ -10,6 +10,6 @@ const API = {
     setPassword(data) {
         return axios.post('/api/v1/password/set', data);
     }
-}
+};
 
 export default API;

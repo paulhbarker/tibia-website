@@ -6,11 +6,11 @@ class DotLoader extends Component {
             <div className='dots'>
                 {this.renderDots().map(i => i)}
             </div>
-        )
+        );
     }
 
     renderDots() {
-        let output = [];
+        const output = [];
 
         for (let i = 1; i <= 6; i++) {
             output.push(<span key={i} className={`dot dot-${i}`}></span>);

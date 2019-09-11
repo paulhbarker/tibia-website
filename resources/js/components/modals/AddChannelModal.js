@@ -33,13 +33,13 @@ class AddChannelModal extends Component {
 
         return validate(values.value)
             .then(() => this.props.addChannel(values))
-            .then(() => this.props.onClose())
+            .then(() => this.props.onClose());
     }
 }
 
 const mapStateToProps = state => ({
 
-})
+});
 
 const mapDispatchToProps = dispatch => ({
     addChannel: values => dispatch(addChannel(values))

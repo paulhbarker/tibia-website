@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Button } from 'antd';
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm } from 'redux-form';
 import Input from './Input';
 import { connect } from 'react-redux';
 
@@ -11,20 +11,20 @@ class DisplayNameForm extends Component {
         const formLayout = 'horizontal';
 
         const labelWidth = 6;
-        const inputWidth = 18
+        const inputWidth = 18;
 
         const formItemLayout = {
             labelCol: { span: labelWidth },
             wrapperCol: { span: inputWidth },
-        }
+        };
 
         const buttonItemLayout = {
             wrapperCol: { span: inputWidth, offset: labelWidth }
-        }
+        };
 
         return (
             <div>
-                <Form onSubmit={this.props.handleSubmit} layout={formLayout} style={{ width: '100%', maxWidth: '400px'}}>
+                <Form onSubmit={this.props.handleSubmit} layout={formLayout} style={{ width: '100%', maxWidth: '400px' }}>
                     <FormItem label={'First Name'} {...formItemLayout}>
                         <Field name='first_name' component={Input} type='text'/>
                     </FormItem>
@@ -43,11 +43,11 @@ class DisplayNameForm extends Component {
                     </FormItem>
                 </Form>
             </div>
-        )
+        );
     }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
     initialValues: state.settings.profile
 });
 

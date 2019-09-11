@@ -44,17 +44,17 @@ class Subscriptions extends Component {
                     </tr>
                 </tbody>
             </table>
-        )
+        );
     }
 }
 
 const mapStateToProps = state => ({
-	isLoading: state.ui.notifications.loading,
+    isLoading: state.ui.notifications.loading,
     prefs: state.notifications.byId,
 });
 
 const mapDispatchToProps = dispatch => ({
-	getNotificationPrefs: () => dispatch(getNotificationPrefs())
+    getNotificationPrefs: () => dispatch(getNotificationPrefs())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Subscriptions);

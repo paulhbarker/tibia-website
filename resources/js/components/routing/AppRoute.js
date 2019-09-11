@@ -8,12 +8,12 @@ class AppRoute extends Component {
     render() {
         return this.props.isAuthenticated
             ? <CustomRoute layout={AppLayout} {...this.props} />
-            : <Redirect to={'/login'} />
+            : <Redirect to={'/login'} />;
     }
 };
 
 const mapStateToProps = state => ({
-	isAuthenticated: state.auth.token
+    isAuthenticated: state.auth.token
 });
 
 export default connect(mapStateToProps)(AppRoute);

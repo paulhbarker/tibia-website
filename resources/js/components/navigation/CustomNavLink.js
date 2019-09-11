@@ -17,7 +17,7 @@ class CustomNavLink extends Component {
             <div className='link-wrapper'>
                 {to ? this.renderLink() : this.renderFake()}
             </div>
-        )
+        );
     }
 
     renderLink() {
@@ -37,7 +37,7 @@ class CustomNavLink extends Component {
                     </div>
                 </div>
             </NavLink>
-        )
+        );
     }
 
     renderFake() {
@@ -57,13 +57,12 @@ class CustomNavLink extends Component {
                     </div>
                 </div>
             </a>
-        )
-
+        );
     }
 
     renderNotifications() {
         if (this.props.notifications) {
-            return <Badge className='leads-notification' count={this.props.notifications} />
+            return <Badge className='leads-notification' count={this.props.notifications} />;
         }
     }
 };

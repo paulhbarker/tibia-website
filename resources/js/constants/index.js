@@ -7,4 +7,4 @@ export default {
     key: {
         STRIPE: 'pk_test_PrRDPqau4OQLb7ZNSgpNgJLE'
     }
-}
+};

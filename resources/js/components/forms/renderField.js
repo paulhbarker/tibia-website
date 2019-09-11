@@ -8,7 +8,7 @@ const renderField = ({ input, label, type, meta: { touched, error } }) => {
             <input {...input} type={type} className={hasErrors ? 'has-error' : ''}/>
             { hasErrors && <div className='input-error'>{error}</div> }
         </div>
-    )
-}
+    );
+};
 
 export default renderField;

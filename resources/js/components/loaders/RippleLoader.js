@@ -6,7 +6,7 @@ class RippleLoader extends Component {
             width = 44,
             height = 44,
             stroke = 2
-        } = this.props
+        } = this.props;
 
         return (
             <svg width={width} height={height} viewBox="0 0 44 44" stroke="#B1B8C1" focusable='false' className='loader'>
@@ -21,7 +21,7 @@ class RippleLoader extends Component {
                     </circle>
                 </g>
             </svg>
-        )
+        );
     }
 }
 

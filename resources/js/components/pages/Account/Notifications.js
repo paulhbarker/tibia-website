@@ -16,7 +16,7 @@ class Notifications extends Component {
             visible: false,
             sending: true,
             error: false
-        }
+        };
 
         this.handleVisibleChange = this.handleVisibleChange.bind(this);
     }
@@ -68,14 +68,14 @@ class Notifications extends Component {
 
     renderTooltipInfo() {
         if (this.state.sending) {
-            return <span>Sending <RippleLoader height={12} width={12} /></span>
+            return <span>Sending <RippleLoader height={12} width={12} /></span>;
         }
 
         if (this.state.error) {
-            return <span>Sending failed. Wait a couple minutes before trying again!</span>
+            return <span>Sending failed. Wait a couple minutes before trying again!</span>;
         }
 
-        return <span>Verifications sent!</span>
+        return <span>Verifications sent!</span>;
     }
 
     openChannelModal() {
@@ -91,19 +91,19 @@ class Notifications extends Component {
             })
             .catch(() => {
                 this.setState({ ...this.state, sending: false, error: true });
-            })
+            });
     }
 
 
     renderNotifLoader() {
         if (this.props.notificationsLoading) {
-            return <RippleLoader height={24} width={24} />
+            return <RippleLoader height={24} width={24} />;
         }
     }
 
     renderChannelLoader() {
         if (this.props.channelsLoading) {
-            return <RippleLoader height={24} width={24} />
+            return <RippleLoader height={24} width={24} />;
         }
     }
 };

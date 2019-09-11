@@ -1,14 +1,14 @@
 import {
+    LOGOUT,
     LOGIN_FAILURE,
     LOGIN_PENDING,
     LOGIN_SUCCESS,
-    LOGOUT,
     RESET_PASSWORD_FAILURE,
     RESET_PASSWORD_PENDING,
     RESET_PASSWORD_SUCCESS
 } from './types';
-import API from '../api/authApi';
 import R from '../constants';
+import API from '../api/authApi';
 import { saveToken, deleteToken, setAuthHeader } from '../util/tokenHelpers';
 
 export const authenticate = ({ email, password }) => dispatch => {
@@ -33,15 +33,15 @@ export const authenticate = ({ email, password }) => dispatch => {
             }
 
             dispatch({ type: LOGIN_FAILURE, error });
-        })
-}
+        });
+};
 
 export const recoverPassword = email => {
     return {
         types: [RESET_PASSWORD_PENDING, RESET_PASSWORD_SUCCESS, RESET_PASSWORD_FAILURE],
         callAPI: () => API.passwordRecovery(email)
-    }
-}
+    };
+};
 
 export const setPassword = values => dispatch => {
     const data = {
@@ -49,7 +49,7 @@ export const setPassword = values => dispatch => {
         email: values.email,
         password: values.password,
         password_confirmation: values.password_confirmation
-    }
+    };
 
     dispatch({ type: RESET_PASSWORD_PENDING });
 
@@ -68,16 +68,16 @@ export const setPassword = values => dispatch => {
             }
 
             dispatch({ type: RESET_PASSWORD_FAILURE, error });
-        })
+        });
 
     return {
         types: [RESET_PASSWORD_PENDING, RESET_PASSWORD_SUCCESS, RESET_PASSWORD_FAILURE],
         callAPI: () => API.setPassword(data)
-    }
-}
+    };
+};
 
 export const logout = () => {
-    deleteToken()
+    deleteToken();
 
     return { type: LOGOUT };
-}
+};

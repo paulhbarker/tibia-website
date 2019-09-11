@@ -1,15 +1,13 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import PageCard from '../../layout/PageCard';
-import AvatarForm from '../../forms/AvatarForm';
 import PageContent from '../../layout/PageContent';
-import RippleLoader from '../../loaders/RippleLoader';
 import DisplayNameForm from '../../forms/DisplayNameForm';
 import validateProfile from '../../../validation/profileValidation';
 import { getProfile, updateProfile } from '../../../actions/profileActions';
 
 class Profile extends Component {
-    componentWillMount() {
+    componentDidMount() {
         this.props.getProfile();
     }
 
@@ -23,15 +21,6 @@ class Profile extends Component {
     render() {
         return (
             <PageContent title={'Profile'}>
-                <PageCard>
-                    <h2>Profile Picture { this.props.isLoading ? <RippleLoader /> : ''}</h2>
-                    <p className='m-b-30'>
-                        This is the photo potential clients will see when
-                        they access your listings. Supported filetypes are
-                        JPEG, PNG, and GIF. Maximum photo size: 250 KB.
-                    </p>
-                    <AvatarForm/>
-                </PageCard>
                 <PageCard>
                     <h2>Display Name</h2>
                     <p className='m-b-40'>
@@ -60,7 +49,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     getProfile: () => dispatch(getProfile()),
-	updateProfile: (prev, next) => dispatch(updateProfile(prev, next)),
+    updateProfile: (prev, next) => dispatch(updateProfile(prev, next)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

@@ -2,7 +2,7 @@ import Logo from '../icons/Logo';
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import LoginForm from '../forms/login/LoginForm';
-import { Redirect, Link } from "react-router-dom";
+import { Redirect, Link } from 'react-router-dom';
 import { authenticate } from '../../actions/authActions';
 import validateLogin from '../../validation/loginValidation';
 
@@ -15,7 +15,7 @@ class Login extends Component {
 
     render() {
         if (this.props.isAuthenticated) {
-            return <Redirect to={'/dashboard'}/>
+            return <Redirect to={'/dashboard'}/>;
         }
 
         const { authError } = this.props;
@@ -28,7 +28,7 @@ class Login extends Component {
                 <div className="account-form login-form">
                     <h1>Sign in</h1>
                     <p className={authError ? 'has-error' : ''}>
-                        { authError ? authError : 'Welcome back to RealtyFlux!' }
+                        { authError ? authError : 'Welcome back to Tibia!' }
                     </p>
 
                     <LoginForm onSubmit={this.login}/>
@@ -38,12 +38,12 @@ class Login extends Component {
                     </div>
                 </div>
             </div>
-        )
+        );
     }
 
     login(values) {
         return validateLogin(values)
-            .then(() => this.props.authenticate(values))
+            .then(() => this.props.authenticate(values));
     }
 }
 
@@ -53,7 +53,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-	authenticate: values => dispatch(authenticate(values))
+    authenticate: values => dispatch(authenticate(values))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

@@ -1,0 +1,30 @@
+{
+    "extends": [
+        "google",
+        "plugin:react/recommended"
+    ],
+    "plugins": [
+        "react"
+    ],
+    "parser": "babel-eslint",
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
+    "rules": {
+        "max-len": "off",
+        "linebreak-style": "off",
+        "indent": ["error", 4, { "SwitchCase": 1 }],
+        "object-curly-spacing": ["error", "always"],
+        "require-jsdoc": "off",
+        "comma-dangle": "off",
+        "arrow-parens": ["error", "as-needed"],
+        "react/prop-types": "off",
+        "operator-linebreak": "off",
+        "react/no-unescaped-entities": "off",
+        "guard-for-in": "off",
+        "prefer-promise-reject-errors": "off",
+        "no-throw-literal": "off"
+    }
+}

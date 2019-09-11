@@ -25,16 +25,16 @@ class Modals extends Component {
                     </div>
                 </div>
             </CSSTransition>
-        )
+        );
     }
 }
 
 const mapStateToProps = state => ({
-	modal: state.modal
+    modal: state.modal
 });
 
 const mapDispatchToProps = dispatch => ({
-	hideModal: () => dispatch(hideModal()),
+    hideModal: () => dispatch(hideModal()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Modals);

@@ -16,7 +16,7 @@ class Verification extends Component {
         this.state = {
             verifying: true,
             verified: false,
-        }
+        };
 
         if (this.props.match.path.includes('email')) {
             this.state.verifyUrl = '/api/v1/verify/email';
@@ -38,7 +38,7 @@ class Verification extends Component {
                     <VerificationAnimator render={() => this.renderFailed()} in={!this.state.verified && !this.state.verifying}/>
                 </React.Fragment>
             </div>
-        )
+        );
     }
 
     renderPending() {
@@ -46,7 +46,7 @@ class Verification extends Component {
             <div className='verification-status'>
                 <h2>Verifying...</h2>
             </div>
-        )
+        );
     }
 
     renderPassed() {
@@ -56,7 +56,7 @@ class Verification extends Component {
                 <h2>Verification Success!</h2>
                 <p>Your {this.state.type} has been verified. You may now close this window.</p>
             </div>
-        )
+        );
     }
 
     renderFailed() {
@@ -66,17 +66,17 @@ class Verification extends Component {
                 <h2>Verification Failure!</h2>
                 <p>The link you used has probably expired (or is no longer valid). Try resending a verification email.</p>
             </div>
-        )
+        );
     }
 
     verify(token) {
         axios.post(this.state.verifyUrl, { token })
             .then(() => {
-                this.setState({ verified: true, verifying: false})
+                this.setState({ verified: true, verifying: false });
             })
             .catch(() => {
-                this.setState({ verified: false, verifying: false})
-            })
+                this.setState({ verified: false, verifying: false });
+            });
     }
 }
 

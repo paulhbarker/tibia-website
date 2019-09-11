@@ -2,20 +2,22 @@ import {
     RESET_PASSWORD_PENDING,
     RESET_PASSWORD_SUCCESS,
     RESET_PASSWORD_FAILURE,
-    UPDATE_PASSWORD_PENDING, UPDATE_PASSWORD_FAILURE, UPDATE_PASSWORD_SUCCESS
+    UPDATE_PASSWORD_PENDING,
+    UPDATE_PASSWORD_FAILURE,
+    UPDATE_PASSWORD_SUCCESS
 } from '../actions/types';
 
 const initialState = {
     error: null,
     isResetting: false,
     success: null
-}
+};
 
 const passwordReducer = (state = initialState, action) => {
     switch (action.type) {
         case UPDATE_PASSWORD_PENDING:
         case RESET_PASSWORD_PENDING: {
-            return { isResetting: true, success: null, error: null }
+            return { isResetting: true, success: null, error: null };
         }
 
         case UPDATE_PASSWORD_SUCCESS:

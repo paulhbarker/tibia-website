@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { deleteChannel, getChannels } from '../../../actions/channelActions';
-import Exit from '../../icons/Exit'
+import Exit from '../../icons/Exit';
 
 class Channels extends Component {
     componentDidMount() {
@@ -12,24 +12,24 @@ class Channels extends Component {
         const { channels } = this.props;
 
         if (_.isEmpty(channels)) {
-            return <div></div>
+            return <div></div>;
         }
 
         return (
             <table className='table table-channels'>
                 <thead>
-                <tr>
-                    <th className='type-column'>Type</th>
-                    <th className='value-column'>Address</th>
-                    <th className='status-column'>Status</th>
-                    <th className='delete-column'></th>
-                </tr>
+                    <tr>
+                        <th className='type-column'>Type</th>
+                        <th className='value-column'>Address</th>
+                        <th className='status-column'>Status</th>
+                        <th className='delete-column'></th>
+                    </tr>
                 </thead>
                 <tbody>
                     { this.renderChannelRows() }
                 </tbody>
             </table>
-        )
+        );
     }
 
     renderChannelRows() {
@@ -44,13 +44,13 @@ class Channels extends Component {
                 <td>{this.renderStatus(channel.verified)}</td>
                 <td onClick={() => this.deleteChannel(channel.id)}><Exit style={{ padding: '5px' }} /></td>
             </tr>
-        ))
+        ));
     }
 
     renderStatus(verified) {
         return verified
             ? <span className='is-verified'>Verified</span>
-            : <span className='un-verified'>Unverified</span>
+            : <span className='un-verified'>Unverified</span>;
     }
 
     deleteChannel(id) {
@@ -67,7 +67,7 @@ const mapStateToProps = state => {
 
     return {
         channels: allIds.map(i => byId[i]),
-    }
+    };
 };
 
 const mapDispatchToProps = dispatch => ({

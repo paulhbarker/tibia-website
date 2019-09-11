@@ -1,10 +1,9 @@
 import { connect } from 'react-redux';
 import SignupSteps from './SignupSteps';
 import React, { Component } from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import SignupInfoForm from '../../forms/signup/SignupInfoForm';
 import SignupCouponForm from '../../forms/signup/SignupCouponForm';
-import SignupBillingForm from '../../forms/signup/SignupBillingForm';
 import { validateCoupon, validateEmail } from '../../../validation/signupValidation';
 import {
     cancelSignup, completeStepOne, completeStepTwo,
@@ -25,10 +24,8 @@ class Signup extends Component {
 
     render() {
         if (this.props.isAuthenticated) {
-            return <Redirect to={'/dashboard'}/>
+            return <Redirect to={'/dashboard'}/>;
         }
-
-        const { isCreating, signupInfo: { error } } = this.props;
 
         return (
             <div>
@@ -42,7 +39,7 @@ class Signup extends Component {
 
                 </div>
             </div>
-        )
+        );
     }
 
     renderStep() {
@@ -55,19 +52,19 @@ class Signup extends Component {
                 <SignupFormAnimator render={() => this.renderBillingForm()} in={step === 3}/>
                 <SignupFormAnimator render={() => this.renderLoader()} in={step === 4}/>
             </React.Fragment>
-        )
+        );
     }
 
     renderInfoForm() {
-        return <SignupInfoForm onSubmit={this.completeStepOne}/>
+        return <SignupInfoForm onSubmit={this.completeStepOne}/>;
     }
 
     renderCouponForm() {
-        return <SignupCouponForm onSubmit={this.completeStepTwo}/>
+        return <SignupCouponForm onSubmit={this.completeStepTwo}/>;
     }
 
     renderBillingForm() {
-        return <SignupBillingForm onSubmit={this.completeStepThree}/>
+        return;
     }
 
     renderLoader() {
@@ -80,7 +77,7 @@ class Signup extends Component {
                 </p>
                 <DotLoader />
             </div>
-        )
+        );
     }
 
     completeStepOne(values) {
