@@ -8,12 +8,12 @@ import { channelCollection } from '../schemas/channelSchema';
 
 export const getChannels = () => {
     return {
-    	types: [GET_CHANNELS_PENDING, GET_CHANNELS_SUCCESS, GET_CHANNELS_FAILURE],
+        types: [GET_CHANNELS_PENDING, GET_CHANNELS_SUCCESS, GET_CHANNELS_FAILURE],
         shouldCallAPI: state => _.isEmpty(state.channels.allIds) && !state.ui.channels.loading,
         callAPI: () => API.getChannels(),
         schema: channelCollection
-    }
-}
+    };
+};
 
 export const addChannel = ({ type, value }) => {
     let method;
@@ -31,13 +31,13 @@ export const addChannel = ({ type, value }) => {
     return {
         types: [ADD_CHANNEL_PENDING, ADD_CHANNEL_SUCCESS, ADD_CHANNEL_FAILURE],
         callAPI: () => API[method](value)
-    }
-}
+    };
+};
 
 export const deleteChannel = id => {
     return {
-    	types: [DELETE_CHANNEL_PENDING, DELETE_CHANNEL_SUCCESS, DELETE_CHANNEL_FAILURE],
-    	callAPI: () => API.deleteChannel(id),
-    	subject: id
-    }
-}
+        types: [DELETE_CHANNEL_PENDING, DELETE_CHANNEL_SUCCESS, DELETE_CHANNEL_FAILURE],
+        callAPI: () => API.deleteChannel(id),
+        subject: id
+    };
+};

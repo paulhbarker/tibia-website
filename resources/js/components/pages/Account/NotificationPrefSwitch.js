@@ -31,7 +31,7 @@ class NotificationPrefSwitch extends Component {
 
 const mapStateToProps = state => ({
     isLoading: state.ui.notifications.loading,
-})
+});
 
 const mapDispatchToProps = dispatch => ({
     subscribeToNotif: (id, type) => dispatch(subscribe(id, type)),

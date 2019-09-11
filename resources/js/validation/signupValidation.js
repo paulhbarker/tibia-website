@@ -1,7 +1,7 @@
-import { SubmissionError } from 'redux-form'
+import { SubmissionError } from 'redux-form';
 
 export const validateInfo = values => {
-    const errors = {}
+    const errors = {};
 
     if ( !values.email ) {
         errors.email = 'Email is required';
@@ -20,10 +20,10 @@ export const validateInfo = values => {
     }
 
     return errors;
-}
+};
 
 export const validateEmail = values => {
-    return axios.get('/api/v1/availability/email', { params: { email: values.email }})
+    return axios.get('/api/v1/availability/email', { params: { email: values.email } })
         .then(res => {
             if (res.data !== true) {
                 throw new SubmissionError({ email: 'Email is already in use.' });
@@ -33,11 +33,11 @@ export const validateEmail = values => {
             if (err instanceof SubmissionError) throw err;
             throw new SubmissionError({ _error: 'An error occurred while validating your email.' });
         });
-}
+};
 
 export const validateCoupon = values => {
-    return axios.get('/api/v1/coupon', { params: { code: values.coupon }})
+    return axios.get('/api/v1/coupon', { params: { code: values.coupon } })
         .then(res => {
             return res.data;
-        })
-}
+        });
+};

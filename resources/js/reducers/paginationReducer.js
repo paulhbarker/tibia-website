@@ -16,7 +16,7 @@ const paginationReducerFor = prefix => {
             }
 
             case prefix + SET_VISIBLE: {
-                return { ...state, onPage: action.payload }
+                return { ...state, onPage: action.payload };
             }
 
             default: {

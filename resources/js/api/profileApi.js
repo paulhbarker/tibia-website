@@ -4,20 +4,12 @@ const API = {
     },
 
     updateProfile(data) {
-        return axios.post('/api/v1/user', data)
+        return axios.post('/api/v1/user', data);
     },
 
     updatePassword(data) {
-        return axios.post('/api/v1/password/update', data)
-    },
-
-    addAvatar(data) {
-        return axios.post('/api/v1/user/photo', data);
-    },
-
-    removeAvatar() {
-        return axios.delete('/api/v1/user/photo');
+        return axios.post('/api/v1/password/update', data);
     }
-}
+};
 
 export default API;

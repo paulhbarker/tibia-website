@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-import TinyNav from '../navigation/TinyNav';
+// import TinyNav from '../navigation/TinyNav';
 import MainNav from '../navigation/MainNav';
 
 const Sidebar = () => (
     <div className='sidebar-wrapper'>
         <nav>
-            {/*<TinyNav />*/}
+            {/* <TinyNav />*/}
             <MainNav />
         </nav>
     </div>
-)
+);
 
 export default Sidebar;

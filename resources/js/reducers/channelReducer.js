@@ -1,7 +1,9 @@
 import {
-    GET_CHANNELS_SUCCESS, GET_CHANNELS_PENDING, GET_CHANNELS_FAILURE,
-    ADD_CHANNEL_SUCCESS, ADD_CHANNEL_PENDING, ADD_CHANNEL_FAILURE,
-    DELETE_CHANNEL_SUCCESS, DELETE_CHANNEL_PENDING, DELETE_CHANNEL_FAILURE,
+    GET_CHANNELS_SUCCESS,
+    ADD_CHANNEL_SUCCESS,
+    DELETE_CHANNEL_SUCCESS,
+    DELETE_CHANNEL_PENDING,
+    DELETE_CHANNEL_FAILURE,
 } from '../actions/types';
 import { combineReducers } from 'redux';
 import { addItem, addKey, removeItem, removeKey } from '../util/reducerHelpers';
@@ -18,13 +20,13 @@ function channelsById(state = {}, action) {
 
         case DELETE_CHANNEL_PENDING: {
             const channel = state[action.subject];
-            return { ...state, [channel.id]: { ...channel, deleting: true } }
+            return { ...state, [channel.id]: { ...channel, deleting: true } };
         }
 
         case DELETE_CHANNEL_FAILURE: {
             const channel = state[action.subject];
             delete channel.deleting;
-            return { ...state, [channel.id]: channel }
+            return { ...state, [channel.id]: channel };
         }
 
         case DELETE_CHANNEL_SUCCESS: {
@@ -38,7 +40,7 @@ function channelsById(state = {}, action) {
 }
 
 function allChannels(state = [], action) {
-    switch(action.type) {
+    switch (action.type) {
         case GET_CHANNELS_SUCCESS: {
             return action.data.result;
         }

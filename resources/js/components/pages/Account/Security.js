@@ -36,7 +36,7 @@ class Security extends Component {
 };
 
 const mapDispatchToProps = dispatch => ({
-	updatePassword: values => dispatch(updatePassword(values))
+    updatePassword: values => dispatch(updatePassword(values))
 });
 
 export default connect(null, mapDispatchToProps)(Security);

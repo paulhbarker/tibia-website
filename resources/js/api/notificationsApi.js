@@ -10,6 +10,6 @@ const API = {
     unsubscribe(id, type) {
         return axios.post('api/v1/notification/unsubscribe', { notification_id: id, type });
     }
-}
+};
 
 export default API;

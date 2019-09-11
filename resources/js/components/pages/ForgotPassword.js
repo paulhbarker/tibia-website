@@ -5,14 +5,14 @@ import React, { Component } from 'react';
 import SetPasswordForm from '../forms/SetPasswordForm';
 import ForgotPasswordForm from '../forms/ForgotPasswordForm';
 import { validateEmail } from '../../validation/emailValidation';
-import { validatePassword } from '../../validation/resetValidation'
+import { validatePassword } from '../../validation/resetValidation';
 import { recoverPassword, setPassword } from '../../actions/authActions';
 
 class ForgotPassword extends Component {
     constructor(props) {
         super(props);
 
-        const query = new URLSearchParams(this.props.location.search)
+        const query = new URLSearchParams(this.props.location.search);
 
         const email = query.get('email');
         const token = query.get('token');
@@ -71,7 +71,7 @@ class ForgotPassword extends Component {
                     }
                 </div>
             </div>
-        )
+        );
     }
 
     handleRecovery(values) {
@@ -101,11 +101,11 @@ class ForgotPassword extends Component {
 }
 
 const mapStateToProps = state => ({
-	error: state.password.error
+    error: state.password.error
 });
 
 const mapDispatchToProps = dispatch => ({
-	recoverPassword: email => dispatch(recoverPassword(email)),
+    recoverPassword: email => dispatch(recoverPassword(email)),
     setPassword: values => dispatch(setPassword(values))
 });
 

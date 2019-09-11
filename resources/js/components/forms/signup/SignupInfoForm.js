@@ -21,7 +21,7 @@ class SignupInfoForm extends Component {
                     Let's start with the easy stuff. Provide your email address and create a password so
                     we can make sure it's you when you come back to check out all your leads!
                 </p>
-                <form onSubmit={handleSubmit} onKeyDown={(e) => this.handleKeyDown(e, handleSubmit)}>
+                <form onSubmit={handleSubmit} onKeyDown={e => this.handleKeyDown(e, handleSubmit)}>
                     <div className='account-form-fields'>
                         <div className='account-input-group'>
                             <Field name='email' label="Your e-mail address" component={LoginInput} type='email'/>
@@ -45,7 +45,7 @@ class SignupInfoForm extends Component {
                 </form>
             </div>
 
-        )
+        );
     }
 
     handleKeyDown(e, cb) {

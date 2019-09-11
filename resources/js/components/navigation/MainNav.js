@@ -1,26 +1,18 @@
-import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import CustomNavLink from './CustomNavLink';
-import { getLeads } from '../../actions/leadActions';
-import { logout } from '../../actions/authActions';
-import LinkSection from './LinkSection';
-import Dashboard from '../icons/Dashboard';
 import Team from '../icons/Team';
-import Page from '../icons/Page';
-import Star from '../icons/Star';
 import Logo from '../icons/Logo';
-import SignOut from '../icons/SignOut';
 import Lock from '../icons/Lock';
 import Email from '../icons/Email';
 import Person from '../icons/Person';
-import CreditCard from '../icons/CreditCard';
+import { connect } from 'react-redux';
+import SignOut from '../icons/SignOut';
+import LinkSection from './LinkSection';
+import React, { Component } from 'react';
+import Dashboard from '../icons/Dashboard';
+import CustomNavLink from './CustomNavLink';
+import { logout } from '../../actions/authActions';
+import { Link, withRouter } from 'react-router-dom';
 
 class MainNav extends Component {
-    componentDidMount() {
-        this.props.refreshLeads();
-    }
-
     render() {
         return (
             <div className='main-nav-wrapper'>
@@ -32,14 +24,11 @@ class MainNav extends Component {
                     </div>
                     <LinkSection label={'App'}>
                         <CustomNavLink to={'/dashboard'} label={'Dashboard'} icon={Dashboard}/>
-                        <CustomNavLink to={'/leads'} label={'Leads'} icon={Team} notifications={this.props.notifications}/>
-                        <CustomNavLink to={'/listings'} label={'Listings'} icon={Page}/>
-                        <CustomNavLink to={'/keyword'} label={'Keyword'} icon={Star}/>
+                        <CustomNavLink to={'/players'} label={'Players'} icon={Team}/>
                     </LinkSection>
                     <LinkSection label={'Account'}>
                         <CustomNavLink to={'/profile'} label={'Profile'} icon={Person}/>
                         <CustomNavLink to={'/security'} label={'Security'} icon={Lock}/>
-                        <CustomNavLink to={'/billing'} label={'Billing'} icon={CreditCard}/>
                         <CustomNavLink to={'/notifications'} label={'Notifications'} icon={Email}/>
                     </LinkSection>
                     <LinkSection>
@@ -52,15 +41,12 @@ class MainNav extends Component {
 };
 
 const mapStateToProps = state => ({
-    notifications: _.reduce(state.leads.allIds, (sum, id) => {
-        return !_.get(state, `leads.byId[${id}].viewed`, true) ? sum + 1 : sum;
-    }, 0)
-})
+
+});
 
 const mapDispatchToProps = dispatch => ({
-    refreshLeads: () => dispatch(getLeads()),
     logout: () => dispatch(logout())
-})
+});
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MainNav));
 

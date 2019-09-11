@@ -1,14 +1,15 @@
 import {
     GET_NOTIF_PREFS_SUCCESS,
     NOTIF_SUBSCRIBE_FAILURE,
-    NOTIF_SUBSCRIBE_PENDING, NOTIF_UNSUBSCRIBE_FAILURE,
+    NOTIF_SUBSCRIBE_PENDING,
+    NOTIF_UNSUBSCRIBE_FAILURE,
     NOTIF_UNSUBSCRIBE_PENDING,
 } from '../actions/types';
 import { combineReducers } from 'redux';
 
 function toggleProp(state, id, prop) {
     const item = state[id];
-    return { ...state, [id]: { ...item, [prop]: !item[prop]}}
+    return { ...state, [id]: { ...item, [prop]: !item[prop] } };
 }
 
 function notificationsById(state = {}, action) {
@@ -31,7 +32,7 @@ function notificationsById(state = {}, action) {
 };
 
 function allNotifications(state = [], action) {
-    switch(action.type) {
+    switch (action.type) {
         case GET_NOTIF_PREFS_SUCCESS: {
             return action.data.result;
         }

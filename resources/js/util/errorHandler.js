@@ -18,4 +18,4 @@ export const getErrorMessage = err => {
 
         return err.message;
     }
-}
+};

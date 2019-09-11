@@ -20,7 +20,7 @@ class SignupInfoForm extends Component {
                     If you're arriving here with a coupon in hand, now's the time to enter it!
                     If you don't have a coupon, just skip this step.
                 </p>
-                <form onSubmit={handleSubmit} onKeyDown={(e) => this.handleKeyDown(e, handleSubmit)}>
+                <form onSubmit={handleSubmit} onKeyDown={e => this.handleKeyDown(e, handleSubmit)}>
                     <div className='account-form-fields'>
                         <div className='account-input-group'>
                             <Field name='coupon' label="Coupon" component={LoginInput} type='text'/>
@@ -40,7 +40,7 @@ class SignupInfoForm extends Component {
                     </div>
                 </form>
             </div>
-        )
+        );
     }
 
     handleKeyDown(e, cb) {

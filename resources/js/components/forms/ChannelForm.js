@@ -5,7 +5,7 @@ import { Field, reduxForm } from 'redux-form';
 import FormField from './FormField';
 
 const ChannelForm = props => {
-    const { handleSubmit, pristine, submitting, onCancel } = props
+    const { handleSubmit, pristine, submitting, onCancel } = props;
 
     return (
         <form onSubmit={handleSubmit}>
@@ -20,10 +20,10 @@ const ChannelForm = props => {
                 </div>
             </FormField>
             <FormField>
-            <div className='field-wrapper'>
-                <label>Value</label>
-                <Field name='value' component={renderField} type='text'/>
-            </div>
+                <div className='field-wrapper'>
+                    <label>Value</label>
+                    <Field name='value' component={renderField} type='text'/>
+                </div>
             </FormField>
             <FormField>
                 <div className='form-controls-wrapper'>
@@ -38,7 +38,7 @@ const ChannelForm = props => {
                 </div>
             </FormField>
         </form>
-    )
-}
+    );
+};
 
 export default reduxForm({ form: 'channelForm' })(ChannelForm);

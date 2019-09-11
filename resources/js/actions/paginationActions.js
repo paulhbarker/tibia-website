@@ -1,4 +1,4 @@
-import { SET_PAGINATION, SET_VISIBLE } from './types';
+import { SET_PAGINATION } from './types';
 
 const setPaginationFor = prefix => {
     const setPagination = data => {

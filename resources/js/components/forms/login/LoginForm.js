@@ -15,7 +15,7 @@ class LoginForm extends Component {
         const { submitting, handleSubmit } = this.props;
 
         return (
-            <form onSubmit={handleSubmit} onKeyDown={(e) => this.handleKeyDown(e, handleSubmit)}>
+            <form onSubmit={handleSubmit} onKeyDown={e => this.handleKeyDown(e, handleSubmit)}>
                 <div className='account-form-fields'>
                     <div className='account-input-group'>
                         <Field name='email' label="Your e-mail address" component={LoginInput} type='email'/>
@@ -37,7 +37,7 @@ class LoginForm extends Component {
                     </Button>
                 </div>
             </form>
-        )
+        );
     }
 
     handleKeyDown(e, cb) {

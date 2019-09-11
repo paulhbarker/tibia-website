@@ -13,20 +13,20 @@ class UpdatePasswordForm extends Component {
         const formLayout = 'horizontal';
 
         const labelWidth = 10;
-        const inputWidth = 14
+        const inputWidth = 14;
 
         const formItemLayout = {
             labelCol: { span: labelWidth },
             wrapperCol: { span: inputWidth },
-        }
+        };
 
         const buttonItemLayout = {
             wrapperCol: { span: inputWidth, offset: labelWidth }
-        }
+        };
 
         return (
             <div>
-                <Form layout={formLayout} style={{ width: '100%', maxWidth: '400px'}}>
+                <Form layout={formLayout} style={{ width: '100%', maxWidth: '400px' }}>
                     { this.renderErrors() }
                     { this.renderStatus() }
                     <FormItem
@@ -66,7 +66,7 @@ class UpdatePasswordForm extends Component {
                     </FormItem>
                 </Form>
             </div>
-        )
+        );
     }
 
     renderErrors() {
@@ -80,7 +80,7 @@ class UpdatePasswordForm extends Component {
             <p className='generic-form-error ant-col-14 ant-col-offset-10'>
                 {apiErrors}
             </p>
-        )
+        );
     }
 
     renderStatus() {
@@ -94,12 +94,12 @@ class UpdatePasswordForm extends Component {
             <p className='generic-form-success ant-col-14 ant-col-offset-10'>
                 Your password has been updated!
             </p>
-        )
+        );
     }
 }
 
 const mapStateToProps = state => ({
-	errors: _.get(state, 'form.updatePassword.submitErrors', {}),
+    errors: _.get(state, 'form.updatePassword.submitErrors', {}),
     apiErrors: state.password.error,
     successful: state.password.success
 });

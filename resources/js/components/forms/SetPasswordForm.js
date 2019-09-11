@@ -15,7 +15,7 @@ class SetPasswordForm extends Component {
         const { submitting, handleSubmit, submitSucceeded } = this.props;
 
         return (
-            <form onSubmit={handleSubmit} onKeyDown={(e) => this.handleKeyDown(e, handleSubmit)}>
+            <form onSubmit={handleSubmit} onKeyDown={e => this.handleKeyDown(e, handleSubmit)}>
                 <div className='account-form-fields'>
                     <div className='account-input-group'>
                         <Field name='password' label="New password" component={LoginInput} type='password'/>
@@ -38,7 +38,7 @@ class SetPasswordForm extends Component {
                     </Button>
                 </div>
             </form>
-        )
+        );
     }
 
     handleKeyDown(e, cb) {

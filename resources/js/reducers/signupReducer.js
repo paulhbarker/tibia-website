@@ -1,11 +1,13 @@
 import {
-    CREATE_ACCOUNT_FAILURE, CREATE_ACCOUNT_PENDING,
-    CREATE_ACCOUNT_SUCCESS,
-    SIGNUP_ADD_BILLING,
-    SIGNUP_ADD_COUPON,
+    SIGNUP_CANCEL,
     SIGNUP_ADD_INFO,
-    SIGNUP_CANCEL, SIGNUP_DECREMENT_STEP,
-    SIGNUP_INCREMENT_STEP
+    SIGNUP_ADD_COUPON,
+    SIGNUP_ADD_BILLING,
+    SIGNUP_INCREMENT_STEP,
+    SIGNUP_DECREMENT_STEP,
+    CREATE_ACCOUNT_PENDING,
+    CREATE_ACCOUNT_SUCCESS,
+    CREATE_ACCOUNT_FAILURE,
 } from '../actions/types';
 
 const initialState = {
@@ -16,16 +18,16 @@ const initialState = {
     coupon: null,
     loading: false,
     error: null
-}
+};
 
 const signupReducer = (state = initialState, action) => {
     switch (action.type) {
         case SIGNUP_INCREMENT_STEP: {
-            return { ...state, step: state.step + 1 }
+            return { ...state, step: state.step + 1 };
         }
 
         case SIGNUP_DECREMENT_STEP: {
-            return { ...state, step: state.step - 1 }
+            return { ...state, step: state.step - 1 };
         }
 
         case SIGNUP_ADD_INFO: {
@@ -41,7 +43,7 @@ const signupReducer = (state = initialState, action) => {
         }
 
         case CREATE_ACCOUNT_PENDING: {
-            return { ...state, loading: true }
+            return { ...state, loading: true };
         }
 
         case CREATE_ACCOUNT_SUCCESS: {
@@ -49,7 +51,7 @@ const signupReducer = (state = initialState, action) => {
         }
 
         case CREATE_ACCOUNT_FAILURE: {
-            return { ...state, error: action.error, loading: false, step: 3 }
+            return { ...state, error: action.error, loading: false, step: 3 };
         }
 
         case SIGNUP_CANCEL: {

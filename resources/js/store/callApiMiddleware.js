@@ -1,5 +1,4 @@
 import { normalize } from 'normalizr';
-import { refreshIfNecessary } from '../util/tokenHelpers';
 import { getErrorMessage } from '../util/errorHandler';
 
 const callApiMiddleware = ({ dispatch, getState }) => next => action => {
@@ -35,8 +34,7 @@ const callApiMiddleware = ({ dispatch, getState }) => next => action => {
      */
     dispatch({ ...props, type: pendingType, subject: subject });
 
-    return refreshIfNecessary(getState(), dispatch)
-        .then(() => callAPI())
+    return callAPI()
         .then(res => {
             let data = res.data;
 
@@ -44,13 +42,13 @@ const callApiMiddleware = ({ dispatch, getState }) => next => action => {
                 data = normalize(res.data, schema);
             }
 
-            dispatch({ ...props, type: successType, subject: subject, data })
+            dispatch({ ...props, type: successType, subject: subject, data });
         })
         .catch(err => {
             const error = getErrorMessage(err);
 
             dispatch({ ...props, type: failureType, subject: subject, error });
         });
-}
+};
 
 export default callApiMiddleware;
