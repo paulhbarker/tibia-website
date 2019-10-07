@@ -23,7 +23,7 @@ class Login extends Component {
         return (
             <div className="login-page">
                 <div className="login-page-logo">
-                    <Logo></Logo>
+                    <Logo />
                 </div>
                 <div className="account-form login-form">
                     <h1>Sign in</h1>

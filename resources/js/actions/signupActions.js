@@ -1,18 +1,18 @@
 import {
     CREATE_ACCOUNT_FAILURE,
     CREATE_ACCOUNT_PENDING, CREATE_ACCOUNT_SUCCESS,
-    SIGNUP_ADD_BILLING, SIGNUP_ADD_COUPON, SIGNUP_ADD_INFO, SIGNUP_CANCEL,
+    SIGNUP_ADD_INFO, SIGNUP_ADD_PLAYER, SIGNUP_CANCEL,
     SIGNUP_DECREMENT_STEP, SIGNUP_INCREMENT_STEP
 } from './types';
 import API from '../api/accountApi';
 
-export const completeStepOne = ({ email, password }) => dispatch => {
-    dispatch({ type: SIGNUP_ADD_INFO, email, password });
+export const completeStepOne = ({ name, email, password }) => dispatch => {
+    dispatch({ type: SIGNUP_ADD_INFO, name, email, password });
     return dispatch(advance());
 };
 
-export const completeStepTwo = ({ coupon }) => dispatch => {
-    dispatch({ type: SIGNUP_ADD_COUPON, coupon });
+export const completeStepTwo = player => dispatch => {
+    dispatch({ type: SIGNUP_ADD_PLAYER, player });
     return dispatch(advance());
 };
 

@@ -19,12 +19,15 @@ class SignupInfoForm extends Component {
             <div>
                 <p>
                     Let's start with the easy stuff. Provide your email address and create a password so
-                    we can make sure it's you when you come back to check out all your leads!
+                    we can make sure it's you when you come back!
                 </p>
                 <form onSubmit={handleSubmit} onKeyDown={e => this.handleKeyDown(e, handleSubmit)}>
                     <div className='account-form-fields'>
                         <div className='account-input-group'>
-                            <Field name='email' label="Your e-mail address" component={LoginInput} type='email'/>
+                            <Field name='name' label="Account Name" component={LoginInput} type='text'/>
+                        </div>
+                        <div className='account-input-group'>
+                            <Field name='email' label="Email Address" component={LoginInput} type='email'/>
                         </div>
                         <div className='account-input-group'>
                             <Field name='password' label="Password" component={LoginInput} type='password'/>

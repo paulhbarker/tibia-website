@@ -2,9 +2,27 @@ import React, { Component } from 'react';
 import { Button } from 'antd';
 import { reduxForm, Field } from 'redux-form';
 import LoginInput from '../login/LoginInput';
+import SelectField from '../SelectField';
+import { validatePlayer } from '../../../validation/signupValidation';
 
-class SignupInfoForm extends Component {
+class SignupPlayerForm extends Component {
     render() {
+        const vocations = [
+            { name: 'Sorceror', value: 1 },
+            { name: 'Druid', value: 2 },
+            { name: 'Paladin', value: 3 },
+            { name: 'Knight', value: 4 },
+        ];
+
+        const towns = [
+            { name: 'Thais', value: 2 }
+        ];
+
+        const genders = [
+            { name: 'Male', value: 1 },
+            { name: 'Female', value: 2 }
+        ];
+
         const buttonStyle = {
             height: '50px',
             padding: '0 28px',
@@ -17,13 +35,21 @@ class SignupInfoForm extends Component {
         return (
             <div>
                 <p className='m-t-40'>
-                    If you're arriving here with a coupon in hand, now's the time to enter it!
-                    If you don't have a coupon, just skip this step.
+                    Create your first player. You may create more players in the future.
                 </p>
                 <form onSubmit={handleSubmit} onKeyDown={e => this.handleKeyDown(e, handleSubmit)}>
                     <div className='account-form-fields'>
                         <div className='account-input-group'>
-                            <Field name='coupon' label="Coupon" component={LoginInput} type='text'/>
+                            <Field name='name' label="Name" component={LoginInput} type='text'/>
+                        </div>
+                        <div className='account-input-group'>
+                            <Field name='vocation' label="Vocation" component={SelectField} options={vocations}/>
+                        </div>
+                        <div className='account-input-group'>
+                            <Field name='sex' label="Gender" component={SelectField} options={genders} />
+                        </div>
+                        <div className='account-input-group'>
+                            <Field name='town' label="Town" component={SelectField} options={towns} />
                         </div>
                     </div>
 
@@ -53,5 +79,6 @@ class SignupInfoForm extends Component {
 
 export default reduxForm({
     form: 'signupCoupon',
+    validate: validatePlayer,
     enableReinitialize: true
-})(SignupInfoForm);
+})(SignupPlayerForm);
