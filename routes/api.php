@@ -25,5 +25,6 @@ Route::group(['prefix' => 'v1'], function (){
 	// Authenticated user interactions
 	Route::group(['middleware' => 'auth:api'], function() {
 		Route::get('account', 'AccountController@get');
+		Route::post('player', 'PlayerController@create');
 	});
 });

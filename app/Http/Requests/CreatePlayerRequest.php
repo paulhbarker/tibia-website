@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateAccountRequest extends FormRequest
+class CreatePlayerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,10 @@ class CreateAccountRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:accounts,name|min:5|max:32',
-            'password' => 'required|min:8|max:32',
-            'email' => 'required|email|unique:accounts,email|max:255',
+            'name' => 'required|alpha|min:4|max:32|unique:players,name',
+            'vocation' => 'required|in:1,2,3,4',
+            'sex' => 'required|in:0,1',
+            'town' => 'required|in:1,2,4,5'
         ];
     }
 }

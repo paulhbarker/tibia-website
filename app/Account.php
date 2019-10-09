@@ -34,6 +34,11 @@ class Account extends Model implements Authenticatable, UserProvider
 		return $this->hasOne(Token::class);
 	}
 
+	public function players()
+	{
+		return $this->hasMany(Player::class);
+	}
+
 	public function updateToken()
 	{
 		if ($this->token()) {

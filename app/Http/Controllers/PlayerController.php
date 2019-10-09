@@ -2,35 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use App\Account;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
-use App\Http\Requests\CreateAccountRequest;
-use App\Http\Resources\Account as AccountResource;
+use App\Player;
+use App\Http\Requests\CreatePlayerRequest;
+use App\Http\Resources\Player as PlayerResource;
 
-class AccountController extends ApiController
+class PlayerController extends ApiController
 {
 	/**
 	 * Create an account
 	 *
-	 * @param CreateAccountRequest $request
-	 * @return \Illuminate\Http\Response
+	 * @param CreatePlayerRequest $request
+	 * @return PlayerResource
 	 */
-	public function create(CreateAccountRequest $request)
+	public function create(CreatePlayerRequest $request)
 	{
-	    Account::create([
-	        'name' => $request->name,
-	        'password' => sha1($request->password),
-	        'email' => $request->email,
-	        'creation' => Carbon::now()->timestamp,
-	        'type' => Account::ACCOUNT_TYPE_NORMAL
-	    ]);
+		$account = $request->user();
+		$player = new Player;
 
-        return $this->respondOk();
-	}
+		$player->name = ucfirst(strtolower($request->name));
+		$player->vocation = $request->vocation;
+		$player->town_id = $request->town;
+		$player->sex = $request->sex;
 
-	public function get(Request $request)
-	{
-		return new AccountResource($request->user());
+		$player->setDefaultOutfit();
+		$account->players()->save($player);
+
+		return $this->respond(new PlayerResource($player));
 	}
 }
