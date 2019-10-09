@@ -1,6 +1,7 @@
 
 import {
     SIGNUP_CANCEL,
+    SIGNUP_CONFIRM,
     SIGNUP_ADD_INFO,
     SIGNUP_ADD_PLAYER,
     SIGNUP_INCREMENT_STEP,
@@ -36,6 +37,10 @@ const signupReducer = (state = initialState, action) => {
 
         case SIGNUP_ADD_PLAYER: {
             return { ...state, player: action.player };
+        }
+
+        case SIGNUP_CONFIRM: {
+            return state;
         }
 
         case CREATE_ACCOUNT_PENDING: {

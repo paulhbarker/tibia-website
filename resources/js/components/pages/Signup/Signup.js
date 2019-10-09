@@ -43,13 +43,13 @@ class Signup extends Component {
     }
 
     renderStep() {
-        // const { step } = this.props.signupInfo;
-        const step = 2;
+        const { step } = this.props.signupInfo;
+
         return (
             <React.Fragment>
                 <SignupFormAnimator render={() => this.renderInfoForm()} in={step === 1}/>
                 <SignupFormAnimator render={() => this.renderCouponForm()} in={step === 2}/>
-                <SignupFormAnimator render={() => this.renderBillingForm()} in={step === 3}/>
+                <SignupFormAnimator render={() => this.renderConfirmation()} in={step === 3}/>
                 <SignupFormAnimator render={() => this.renderLoader()} in={step === 4}/>
             </React.Fragment>
         );
@@ -63,8 +63,8 @@ class Signup extends Component {
         return <SignupPlayerForm onSubmit={this.completeStepTwo}/>;
     }
 
-    renderBillingForm() {
-        return;
+    renderConfirmation() {
+        return <button onClick={() => this.completeStepThree()}>Next</button>;
     }
 
     renderLoader() {
@@ -90,8 +90,8 @@ class Signup extends Component {
             .then(() => this.props.advanceTwo(values));
     }
 
-    completeStepThree(token) {
-        this.props.advanceThree({ stripeToken: token });
+    completeStepThree() {
+        this.props.advanceThree();
 
         this.props.createAccount(this.props.signupInfo);
     }
@@ -106,7 +106,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     advanceOne: values => dispatch(completeStepOne(values)),
     advanceTwo: values => dispatch(completeStepTwo(values)),
-    advanceThree: values => dispatch(completeStepThree(values)),
+    advanceThree: () => dispatch(completeStepThree()),
     createAccount: values => dispatch(createAccount(values)),
     cancelSignup: () => dispatch(cancelSignup()),
     advance: () => dispatch(advance()),

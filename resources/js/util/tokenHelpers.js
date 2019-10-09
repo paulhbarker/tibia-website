@@ -1,7 +1,5 @@
 export const saveToken = token => {
-    token.expires_at = new Date().getTime() + (token.expires_in * 1000);
-
-    localStorage.setItem('auth_token', JSON.stringify(token));
+    localStorage.setItem('auth_token', token);
 
     return token;
 };

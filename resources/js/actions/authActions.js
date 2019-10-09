@@ -11,14 +11,14 @@ import R from '../constants';
 import API from '../api/authApi';
 import { saveToken, deleteToken, setAuthHeader } from '../util/tokenHelpers';
 
-export const authenticate = ({ email, password }) => dispatch => {
+export const authenticate = ({ name, password }) => dispatch => {
     dispatch({ type: LOGIN_PENDING });
 
-    return axios.post('/api/v1/login', { username: email, password })
+    return axios.post('/api/v1/login', { name, password })
         .then(res => {
-            const token = saveToken(res.data);
+            const token = saveToken(res.data.token);
 
-            setAuthHeader(token.access_token);
+            setAuthHeader(token);
 
             dispatch({ type: LOGIN_SUCCESS, token });
         })
