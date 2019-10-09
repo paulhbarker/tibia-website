@@ -1,8 +1,8 @@
+
 import {
     SIGNUP_CANCEL,
     SIGNUP_ADD_INFO,
-    SIGNUP_ADD_COUPON,
-    SIGNUP_ADD_BILLING,
+    SIGNUP_ADD_PLAYER,
     SIGNUP_INCREMENT_STEP,
     SIGNUP_DECREMENT_STEP,
     CREATE_ACCOUNT_PENDING,
@@ -12,10 +12,10 @@ import {
 
 const initialState = {
     step: 1,
+    name: null,
     email: null,
     password: null,
-    stripeToken: null,
-    coupon: null,
+    player: {},
     loading: false,
     error: null
 };
@@ -31,15 +31,11 @@ const signupReducer = (state = initialState, action) => {
         }
 
         case SIGNUP_ADD_INFO: {
-            return { ...state, email: action.email, password: action.password };
+            return { ...state, name: action.name, email: action.email, password: action.password };
         }
 
-        case SIGNUP_ADD_COUPON: {
-            return { ...state, coupon: action.coupon };
-        }
-
-        case SIGNUP_ADD_BILLING: {
-            return { ...state, stripeToken: action.stripeToken };
+        case SIGNUP_ADD_PLAYER: {
+            return { ...state, player: action.player };
         }
 
         case CREATE_ACCOUNT_PENDING: {

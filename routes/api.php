@@ -15,6 +15,9 @@ use Illuminate\Http\Request;
 
 Route::group(['prefix' => 'v1'], function (){
 	Route::get('/health', 'StatusController@health');
+	Route::get('/availability/email', 'AvailabilityController@email');
+	Route::get('/availability/name', 'AvailabilityController@name');
+	Route::get('/availability/player', 'AvailabilityController@player');
 
 	// Accounts
 	Route::post('account', 'AccountController@create');

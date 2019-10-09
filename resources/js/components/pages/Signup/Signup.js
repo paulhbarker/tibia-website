@@ -3,8 +3,8 @@ import SignupSteps from './SignupSteps';
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import SignupInfoForm from '../../forms/signup/SignupInfoForm';
-import SignupCouponForm from '../../forms/signup/SignupCouponForm';
-import { validateCoupon, validateEmail } from '../../../validation/signupValidation';
+import SignupPlayerForm from '../../forms/signup/SignupPlayerForm';
+import { ensureUniqueness, validatePlayerName } from '../../../validation/signupValidation';
 import {
     cancelSignup, completeStepOne, completeStepTwo,
     completeStepThree, advance, retrogress, createAccount
@@ -43,8 +43,8 @@ class Signup extends Component {
     }
 
     renderStep() {
-        const { step } = this.props.signupInfo;
-
+        // const { step } = this.props.signupInfo;
+        const step = 2;
         return (
             <React.Fragment>
                 <SignupFormAnimator render={() => this.renderInfoForm()} in={step === 1}/>
@@ -60,7 +60,7 @@ class Signup extends Component {
     }
 
     renderCouponForm() {
-        return <SignupCouponForm onSubmit={this.completeStepTwo}/>;
+        return <SignupPlayerForm onSubmit={this.completeStepTwo}/>;
     }
 
     renderBillingForm() {
@@ -81,14 +81,13 @@ class Signup extends Component {
     }
 
     completeStepOne(values) {
-        return validateEmail(values)
+        return ensureUniqueness(values)
             .then(() => this.props.advanceOne(values));
     }
 
     completeStepTwo(values) {
-        return validateCoupon(values)
-            .then(coupon => this.props.advanceTwo({ coupon }))
-            .catch(() => this.props.advanceTwo({ coupon: null }));
+        return validatePlayerName(values)
+            .then(() => this.props.advanceTwo(values));
     }
 
     completeStepThree(token) {

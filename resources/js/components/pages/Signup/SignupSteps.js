@@ -12,8 +12,8 @@ class SignupSteps extends Component {
                     <h1>Create an account</h1>
                     <Steps progressDot current={this.props.step - 1} style={{ maxWidth: '700px', marginBottom: '40px' }}>
                         <Step title="Credentials" description="Account login." />
-                        <Step title="Coupon" description="Discount options." />
-                        <Step title="Billing" description="Credit card info." />
+                        <Step title="Player" description="Create a player." />
+                        <Step title="Confirm" description="Verify info." />
                     </Steps>
                 </div>
             </StepsAnimator>
