@@ -4,23 +4,24 @@ import { reduxForm, Field } from 'redux-form';
 import LoginInput from '../login/LoginInput';
 import SelectField from '../SelectField';
 import { validatePlayer } from '../../../validation/signupValidation';
+import C from '../../../constants';
 
 class SignupPlayerForm extends Component {
     render() {
         const vocations = [
-            { name: 'Sorceror', value: 1 },
-            { name: 'Druid', value: 2 },
-            { name: 'Paladin', value: 3 },
-            { name: 'Knight', value: 4 },
+            { name: 'Sorceror', value: C.vocations.SORCEROR },
+            { name: 'Druid', value: C.vocations.DRUID },
+            { name: 'Paladin', value: C.vocations.PALADIN },
+            { name: 'Knight', value: C.vocations.KNIGHT },
         ];
 
         const towns = [
-            { name: 'Thais', value: 2 }
+            { name: 'Thais', value: C.towns.THAIS }
         ];
 
         const genders = [
-            { name: 'Male', value: 1 },
-            { name: 'Female', value: 2 }
+            { name: 'Male', value: C.sex.MALE },
+            { name: 'Female', value: C.sex.FEMALE }
         ];
 
         const buttonStyle = {

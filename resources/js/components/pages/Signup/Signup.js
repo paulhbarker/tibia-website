@@ -2,15 +2,16 @@ import { connect } from 'react-redux';
 import SignupSteps from './SignupSteps';
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import DotLoader from '../../loaders/DotLoader';
 import SignupInfoForm from '../../forms/signup/SignupInfoForm';
 import SignupPlayerForm from '../../forms/signup/SignupPlayerForm';
+import SignupFormAnimator from '../../forms/signup/SignupAnimations';
+import SignupConfirmation from '../../forms/signup/SignupConfirmation';
 import { ensureUniqueness, validatePlayerName } from '../../../validation/signupValidation';
 import {
     cancelSignup, completeStepOne, completeStepTwo,
     completeStepThree, advance, retrogress, createAccount
 } from '../../../actions/signupActions';
-import SignupFormAnimator from '../../forms/signup/SignupAnimations';
-import DotLoader from '../../loaders/DotLoader';
 
 class Signup extends Component {
     constructor(props) {
@@ -44,11 +45,11 @@ class Signup extends Component {
 
     renderStep() {
         const { step } = this.props.signupInfo;
-
+        // const step = 3;
         return (
             <React.Fragment>
                 <SignupFormAnimator render={() => this.renderInfoForm()} in={step === 1}/>
-                <SignupFormAnimator render={() => this.renderCouponForm()} in={step === 2}/>
+                <SignupFormAnimator render={() => this.renderSignupPlayerForm()} in={step === 2}/>
                 <SignupFormAnimator render={() => this.renderConfirmation()} in={step === 3}/>
                 <SignupFormAnimator render={() => this.renderLoader()} in={step === 4}/>
             </React.Fragment>
@@ -59,12 +60,12 @@ class Signup extends Component {
         return <SignupInfoForm onSubmit={this.completeStepOne}/>;
     }
 
-    renderCouponForm() {
+    renderSignupPlayerForm() {
         return <SignupPlayerForm onSubmit={this.completeStepTwo}/>;
     }
 
     renderConfirmation() {
-        return <button onClick={() => this.completeStepThree()}>Next</button>;
+        return <SignupConfirmation onConfirm={() => this.completeStepThree()}>Next</SignupConfirmation>;
     }
 
     renderLoader() {

@@ -6,5 +6,21 @@ export default {
 
     key: {
         STRIPE: 'pk_test_PrRDPqau4OQLb7ZNSgpNgJLE'
-    }
+    },
+
+    vocations: {
+        SORCEROR: 1,
+        DRUID: 2,
+        PALADIN: 3,
+        KNIGHT: 4
+    },
+
+    towns: {
+        THAIS: 2
+    },
+
+    sex: {
+        MALE: 0,
+        FEMALE: 1
+    },
 };

@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Player extends Model
 {
-	public const SEX_FEMALE = 0;
-	public const SEX_MALE = 1;
+	public const FEMALE = 0;
+	public const MALE = 1;
 
 	/**
 	 * @var array Remove protection on all attr.
@@ -43,7 +43,7 @@ class Player extends Model
 		'posy' => 0,
 		'posz' => 0,
 		'save' => 1,
-		'sex' => self::SEX_MALE,
+		'sex' => self::MALE,
 		'skill_axe' => 10,
 		'skill_club' => 10,
 		'skill_dist' => 10,
@@ -89,8 +89,8 @@ class Player extends Model
 	    $this->looklegs = 58;
 
 		switch ($this->sex) {
-			case self::SEX_MALE: $this->setMaleOutfit(); break;
-			case self::SEX_FEMALE: $this->setFemaleOutfit(); break;
+			case self::MALE: $this->setMaleOutfit(); break;
+			case self::FEMALE: $this->setFemaleOutfit(); break;
 			default: $this->setMaleOutfit();
 		}
     }
